@@ -17,3 +17,12 @@ compileTestKotlin.kotlinOptions {
     jvmTarget = "1.8"
     freeCompilerArgs += "-Xjvm-default=enable"
 }
+
+
+
+task servirtium_record_mode_for_compatibility_suite(type: Exec) {
+    dependsOn compileTestJava
+    group = "Execution"
+    description = "Start Servirtium in record mode"
+    commandLine "java", "-classpath", sourceSets.test.runtimeClasspath.getAsPath(), "org.http4k.servirtium.CompatibilitySuite", "record"
+}
